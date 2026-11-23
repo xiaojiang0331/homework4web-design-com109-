@@ -222,7 +222,7 @@ $(function () {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 100) reportError('email', 'Please enter a valid email address, such as alex@example.com.');
     if (!subject) reportError('subject', 'Please choose a subject.');
     if (message.length < 10 || message.length > 600) reportError('message', 'Please enter a message between 10 and 600 characters.');
-    if (!$('#consent').is(':checked')) reportError('consent', 'Please confirm that you understand this is a demonstration.');
+    if (!$('#consent').is(':checked')) reportError('consent', 'Please check your details and tick the box.');
     if (firstInvalid) {
       $('#contact-status').text('Please correct the highlighted fields.');
       $('#' + firstInvalid).trigger('focus');
