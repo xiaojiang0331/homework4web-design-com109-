@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover six influential photographers, explore their work and learn to look more closely with Lens and Legacy.">
+  <title>Contact | Lens &amp; Legacy</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/jquery-3.7.1.min.js" defer></script>
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="site-header">
+  <a class="brand" href="index.html" aria-label="Lens and Legacy home"><span class="brand-symbol" aria-hidden="true">L<span>•</span>L</span><span>Lens <i>&amp;</i> Legacy<small>A STUDY IN SEEING</small></span></a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation">Menu</button>
+  <nav id="navigation" aria-label="Main navigation"><a href="index.html">Home</a><a href="photographers.html">Photographers</a><a href="gallery.html">Gallery</a><a href="quiz.html">Photography Quiz</a><a href="contact.html" class="active" aria-current="page">Contact</a></nav>
+</header>
+<main id="main"><section class="page-intro wrap"><p class="eyebrow">CONTINUE THE CONVERSATION</p><h1>What caught<br><em>your eye?</em></h1><p>Have a favourite photographer, a question or an idea for the collection? Leave a note about what you would like to explore next.</p></section><section class="wrap contact-layout"><aside class="contact-note"><img src="images/atget.jpg" alt="Historic buildings in Atget's photograph of the Marché des Patriarches" loading="lazy"><p class="eyebrow">A DIFFERENT WAY OF SEEING</p><h2>Every perspective<br>adds something.</h2><p>This is a demonstration contact form. Your message appears on this page after validation. It is not emailed or stored.</p></aside><div><form id="contact-form" novalidate><p class="form-note">All fields are required. Please use sample details for this demonstration.</p>
+<div class="form-field"><label for="name">Your name</label><input id="name" name="name" type="text" autocomplete="name" maxlength="60" aria-describedby="name-help name-error" required><small id="name-help">Enter 2–60 characters.</small><span id="name-error" class="error"></span></div>
+<div class="form-field"><label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" maxlength="100" aria-describedby="email-error" required><span id="email-error" class="error"></span></div>
+<div class="form-field"><label for="subject">What would you like to share?</label><select id="subject" name="subject" aria-describedby="subject-error" required><option value="">Choose a subject</option><option>Suggest a photographer</option><option>Ask about a photograph</option><option>Share feedback</option></select><span id="subject-error" class="error"></span></div>
+<div class="form-field"><label for="message">Your message</label><textarea id="message" name="message" rows="6" maxlength="600" aria-describedby="message-help message-error" required></textarea><small id="message-help">10–600 characters. <span id="character-count">0</span>/600</small><span id="message-error" class="error"></span></div>
+<div class="form-field"><label class="check-label"><input type="checkbox" id="consent" aria-describedby="consent-error" required> I understand this is a local demonstration and my message will not be sent.</label><span id="consent-error" class="error"></span></div>
+<p id="contact-status" class="error" role="alert"></p><button class="button" type="submit">Preview my message</button></form><section id="contact-result" class="result-panel" tabindex="-1" aria-label="Message confirmation" hidden><p class="eyebrow">MESSAGE PREVIEW</p><h2>Thank you, <span id="result-name"></span>.</h2><p>Your details passed the form checks. This preview is visible only on this page; nothing has been sent.</p><dl><dt>Email</dt><dd id="result-email"></dd><dt>Subject</dt><dd id="result-subject"></dd><dt>Message</dt><dd id="result-message"></dd></dl><button id="edit-message" class="secondary-button" type="button">Edit my message</button></section></div></section></main>
+<footer class="site-footer">
+ <div><a class="footer-brand" href="index.html">Lens &amp; Legacy</a><p>Great photographs begin with a different way of seeing.</p></div>
+ <div><p>An independent educational photography project.</p><p>Image credits and collection links appear in the <a href="gallery.html#credits">gallery</a>.</p><small>© 2026 Lens &amp; Legacy · <span id="current-date"></span></small></div>
+</footer>
+<noscript><p class="notice">Enable JavaScript to use gallery filters, the quiz and the contact form. Photographer biographies remain available below each profile.</p></noscript>
+</body>
+</html>
