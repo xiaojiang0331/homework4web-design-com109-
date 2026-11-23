@@ -1,3 +1,24 @@
+# Local screenshots and downloadable packages
+.local-output/
+*.zip
+preview*.png
+
+# Temporary files and logs
+*.log
+*.tmp
+*.bak
+*~
+
+# Operating system files
 .DS_Store
 Thumbs.db
-*.zip
+Desktop.ini
+
+# Personal editor settings
+.vscode/
+.idea/
+
+# Local environment settings
+.env
+.env.*
+!.env.example
