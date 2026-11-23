@@ -79,12 +79,6 @@ var quizAnswers = [
 
 /* Shared navigation and date */
 $(function () {
-  $('.site-header').addClass('js-menu');
-  $('.menu-toggle').on('click', function () {
-    var isOpen = $(this).attr('aria-expanded') === 'true';
-    $(this).attr('aria-expanded', !isOpen);
-    $('#navigation').toggleClass('is-open', !isOpen);
-  });
   $('#current-date').text(new Date().toLocaleDateString('en-GB', {
     day: 'numeric', month: 'short', year: 'numeric'
   }));
@@ -94,7 +88,7 @@ $(function () {
   $('.story-toggle').attr('aria-expanded', 'false').text('Read the story');
   $('.story-toggle').on('click', function () {
     var expanded = $(this).attr('aria-expanded') === 'true';
-    var duration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 250;
+    var duration = 200;
     $('#' + $(this).attr('aria-controls')).stop(true, true).slideToggle(duration);
     $(this).attr('aria-expanded', !expanded).text(expanded ? 'Read the story' : 'Close the story');
   });
@@ -107,6 +101,7 @@ $(function () {
     var category = $(this).attr('data-filter');
     $('.filter-button').removeClass('selected').attr('aria-pressed', 'false');
     $(this).addClass('selected').attr('aria-pressed', 'true');
+    $('#image-viewer').prop('hidden', true);
     visibleImages = [];
     $('.gallery-item').each(function () {
       var show = category === 'All' || $(this).attr('data-category') === category;
@@ -134,16 +129,17 @@ $(function () {
   $('.gallery-open').on('click', function () {
     lastImageButton = this;
     showImage(Number($(this).attr('data-index')));
-    document.getElementById('image-viewer').showModal();
-    document.getElementById('close-viewer').focus();
+    $('#image-viewer').prop('hidden', false);
+    document.getElementById('image-viewer').scrollIntoView();
+    $('#close-viewer').trigger('focus');
   });
-  $('#close-viewer').on('click', function () { document.getElementById('image-viewer').close(); });
+  $('#close-viewer').on('click', function () {
+    $('#image-viewer').prop('hidden', true);
+    if (lastImageButton) lastImageButton.focus();
+  });
   $('#previous-image').on('click', function () { moveImage(-1); });
   $('#next-image').on('click', function () { moveImage(1); });
-  $('#image-viewer').on('keydown', function (event) {
-    if (event.key === 'ArrowLeft') moveImage(-1);
-    if (event.key === 'ArrowRight') moveImage(1);
-  }).on('close', function () { if (lastImageButton) lastImageButton.focus(); });
+
 
   /* Local storage is optional. The quiz still works if storage is blocked. */
   function showSavedScore() {
@@ -189,7 +185,7 @@ $(function () {
     }
     $('#quiz-result').empty().prop('hidden', false)
       .append($('<p>').addClass('eyebrow').text('YOUR RESULT'))
-      .append($('<h2>').text(score === 6 ? 'A brilliant eye for detail.' : 'Keep looking. Keep learning.'))
+      .append($('<h2>').text(score === 6 ? 'All answers correct!' : 'Your quiz result'))
       .append($('<p>').addClass('score').text(score + ' / 6'))
       .append($('<p>').text('Review the explanation below each question, then revisit the photographer stories.'));
     if ($('#save-score').is(':checked')) {

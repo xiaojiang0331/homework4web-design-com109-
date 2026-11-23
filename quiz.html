@@ -13,15 +13,77 @@
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
 <header class="site-header">
-  <a class="brand" href="index.html" aria-label="Lens and Legacy home"><span class="brand-symbol" aria-hidden="true">L<span>•</span>L</span><span>Lens <i>&amp;</i> Legacy<small>A STUDY IN SEEING</small></span></a>
-  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation">Menu</button>
+  <a class="brand" href="index.html" aria-label="Lens and Legacy home"><span>Lens <i>&amp;</i> Legacy</span></a>
   <nav id="navigation" aria-label="Main navigation"><a href="index.html">Home</a><a href="photographers.html">Photographers</a><a href="gallery.html">Gallery</a><a href="quiz.html" class="active" aria-current="page">Photography Quiz</a><a href="contact.html">Contact</a></nav>
 </header>
-<main id="main"><section class="page-intro wrap"><p class="eyebrow">A SMALL TEST OF OBSERVATION</p><h1>Look closer.<br><em>What stays with you?</em></h1><p>Six questions about the people behind the photographs. Read their stories first, or see what you already know.</p></section><section class="wrap quiz-layout"><aside class="quiz-note"><p class="eyebrow">YOUR FIELD NOTES</p><h2>Curiosity counts.</h2><p>Choose one answer for every question. Your result includes a short explanation for each answer.</p><p id="last-score">Your latest result will appear here when you choose to save it.</p><label class="check-label"><input id="save-score" type="checkbox"> Remember my latest score on this device</label><button id="clear-score" type="button" class="text-button">Clear saved score</button><a href="photographers.html">Read the photographer stories</a></aside><div><form id="quiz-form" novalidate><fieldset id="question-0"><legend><span class="question-number">Question 1 of 6</span>Who is especially known for photographs of the American West?</legend><label class="answer-option"><input type="radio" name="q0" value="0"> <span>Ansel Adams</span></label><label class="answer-option"><input type="radio" name="q0" value="1"> <span>Eugène Atget</span></label><label class="answer-option"><input type="radio" name="q0" value="2"> <span>Julia Margaret Cameron</span></label><p class="answer-feedback" id="feedback-0"></p></fieldset><fieldset id="question-1"><legend><span class="question-number">Question 2 of 6</span>Who made Migrant Mother in 1936?</legend><label class="answer-option"><input type="radio" name="q1" value="0"> <span>Gordon Parks</span></label><label class="answer-option"><input type="radio" name="q1" value="1"> <span>Dorothea Lange</span></label><label class="answer-option"><input type="radio" name="q1" value="2"> <span>Lewis Hine</span></label><p class="answer-feedback" id="feedback-1"></p></fieldset><fieldset id="question-2"><legend><span class="question-number">Question 3 of 6</span>Which city did Eugène Atget document?</legend><label class="answer-option"><input type="radio" name="q2" value="0"> <span>London</span></label><label class="answer-option"><input type="radio" name="q2" value="1"> <span>New York</span></label><label class="answer-option"><input type="radio" name="q2" value="2"> <span>Paris</span></label><p class="answer-feedback" id="feedback-2"></p></fieldset><fieldset id="question-3"><legend><span class="question-number">Question 4 of 6</span>What is Julia Margaret Cameron particularly associated with?</legend><label class="answer-option"><input type="radio" name="q3" value="0"> <span>Sports photography</span></label><label class="answer-option"><input type="radio" name="q3" value="1"> <span>Expressive portraits</span></label><label class="answer-option"><input type="radio" name="q3" value="2"> <span>Underwater photography</span></label><p class="answer-feedback" id="feedback-3"></p></fieldset><fieldset id="question-4"><legend><span class="question-number">Question 5 of 6</span>What social issue did Lewis Hine famously document?</legend><label class="answer-option"><input type="radio" name="q4" value="0"> <span>Child labour</span></label><label class="answer-option"><input type="radio" name="q4" value="1"> <span>Space travel</span></label><label class="answer-option"><input type="radio" name="q4" value="2"> <span>Fashion trends</span></label><p class="answer-feedback" id="feedback-4"></p></fieldset><fieldset id="question-5"><legend><span class="question-number">Question 6 of 6</span>Who is shown in Gordon Parks’s American Gothic?</legend><label class="answer-option"><input type="radio" name="q5" value="0"> <span>Florence Owens Thompson</span></label><label class="answer-option"><input type="radio" name="q5" value="1"> <span>Julia Margaret Cameron</span></label><label class="answer-option"><input type="radio" name="q5" value="2"> <span>Ella Watson</span></label><p class="answer-feedback" id="feedback-5"></p></fieldset><p id="quiz-error" class="error" role="alert"></p><div class="button-row"><button class="button" type="submit">Check my answers</button><button class="secondary-button" type="reset">Start again</button></div></form><section id="quiz-result" class="result-panel" tabindex="-1" aria-label="Quiz result" hidden></section></div></section></main>
+<main id="main">
+<section class="page-intro wrap">
+<p class="eyebrow">TEST YOUR KNOWLEDGE</p>
+<h1>Photography Quiz</h1>
+<p>Six questions about the people behind the photographs. Read their stories first, or see what you already know.</p>
+</section>
+<section class="wrap quiz-layout"><aside class="quiz-note">
+<p class="eyebrow">QUIZ INFORMATION</p>
+<h2>How to play</h2>
+<p>Choose one answer for every question. Your result includes a short explanation for each answer.</p>
+<p id="last-score">Your latest result will appear here when you choose to save it.</p>
+<label class="check-label"><input id="save-score" type="checkbox"> Remember my latest score on this device</label><button id="clear-score" type="button" class="text-button">Clear saved score</button><a href="photographers.html">Read the photographer stories</a></aside>
+<div>
+<form id="quiz-form" novalidate>
+<fieldset id="question-0"><legend><span class="question-number">Question 1 of 6</span>Who is especially known for photographs of the American West?</legend>
+<label class="answer-option"><input type="radio" name="q0" value="0"> <span>Ansel Adams</span></label>
+<label class="answer-option"><input type="radio" name="q0" value="1"> <span>Eugène Atget</span></label>
+<label class="answer-option"><input type="radio" name="q0" value="2"> <span>Julia Margaret Cameron</span></label>
+<p class="answer-feedback" id="feedback-0"></p>
+</fieldset>
+<fieldset id="question-1"><legend><span class="question-number">Question 2 of 6</span>Who made Migrant Mother in 1936?</legend>
+<label class="answer-option"><input type="radio" name="q1" value="0"> <span>Gordon Parks</span></label>
+<label class="answer-option"><input type="radio" name="q1" value="1"> <span>Dorothea Lange</span></label>
+<label class="answer-option"><input type="radio" name="q1" value="2"> <span>Lewis Hine</span></label>
+<p class="answer-feedback" id="feedback-1"></p>
+</fieldset>
+<fieldset id="question-2"><legend><span class="question-number">Question 3 of 6</span>Which city did Eugène Atget document?</legend>
+<label class="answer-option"><input type="radio" name="q2" value="0"> <span>London</span></label>
+<label class="answer-option"><input type="radio" name="q2" value="1"> <span>New York</span></label>
+<label class="answer-option"><input type="radio" name="q2" value="2"> <span>Paris</span></label>
+<p class="answer-feedback" id="feedback-2"></p>
+</fieldset>
+<fieldset id="question-3"><legend><span class="question-number">Question 4 of 6</span>What is Julia Margaret Cameron particularly associated with?</legend>
+<label class="answer-option"><input type="radio" name="q3" value="0"> <span>Sports photography</span></label>
+<label class="answer-option"><input type="radio" name="q3" value="1"> <span>Expressive portraits</span></label>
+<label class="answer-option"><input type="radio" name="q3" value="2"> <span>Underwater photography</span></label>
+<p class="answer-feedback" id="feedback-3"></p>
+</fieldset>
+<fieldset id="question-4"><legend><span class="question-number">Question 5 of 6</span>What social issue did Lewis Hine famously document?</legend>
+<label class="answer-option"><input type="radio" name="q4" value="0"> <span>Child labour</span></label>
+<label class="answer-option"><input type="radio" name="q4" value="1"> <span>Space travel</span></label>
+<label class="answer-option"><input type="radio" name="q4" value="2"> <span>Fashion trends</span></label>
+<p class="answer-feedback" id="feedback-4"></p>
+</fieldset>
+<fieldset id="question-5"><legend><span class="question-number">Question 6 of 6</span>Who is shown in Gordon Parks’s American Gothic?</legend>
+<label class="answer-option"><input type="radio" name="q5" value="0"> <span>Florence Owens Thompson</span></label>
+<label class="answer-option"><input type="radio" name="q5" value="1"> <span>Julia Margaret Cameron</span></label>
+<label class="answer-option"><input type="radio" name="q5" value="2"> <span>Ella Watson</span></label>
+<p class="answer-feedback" id="feedback-5"></p>
+</fieldset>
+<p id="quiz-error" class="error" role="alert"></p>
+<div class="button-row"><button class="button" type="submit">Check my answers</button><button class="secondary-button" type="reset">Start again</button>
+</div>
+</form>
+<section id="quiz-result" class="result-panel" tabindex="-1" aria-label="Quiz result" hidden>
+</section>
+</div>
+</section></main>
 <footer class="site-footer">
- <div><a class="footer-brand" href="index.html">Lens &amp; Legacy</a><p>Great photographs begin with a different way of seeing.</p></div>
- <div><p>An independent educational photography project.</p><p>Image credits and collection links appear in the <a href="gallery.html#credits">gallery</a>.</p><small>© 2026 Lens &amp; Legacy · <span id="current-date"></span></small></div>
+ <div><a class="footer-brand" href="index.html">Lens &amp; Legacy</a>
+<p>A student website about famous photographers.</p>
+</div>
+ <div>
+<p>Made with HTML, CSS, JavaScript and jQuery.</p>
+<p>Image credits and collection links appear in the <a href="gallery.html#credits">gallery</a>.</p><small>© 2026 Lens &amp; Legacy · <span id="current-date"></span></small>
+</div>
 </footer>
-<noscript><p class="notice">Enable JavaScript to use gallery filters, the quiz and the contact form. Photographer biographies remain available below each profile.</p></noscript>
+<noscript>
+<p class="notice">Enable JavaScript to use gallery filters, the quiz and the contact form. Photographer biographies remain available below each profile.</p></noscript>
 </body>
 </html>

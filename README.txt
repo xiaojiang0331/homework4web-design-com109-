@@ -1,4 +1,4 @@
-LENS & LEGACY — VERSION 1
+LENS & LEGACY — SIMPLIFIED VERSION 1
 
 OPEN THE WEBSITE
 Extract the complete folder, then double-click index.html in a current version
@@ -26,8 +26,8 @@ images/             Six historical photographs and an original SVG favicon
 
 INTERACTIONS
 Photographers: choose Read the story to expand or collapse extra information.
-Gallery: choose a category and open a photograph. Previous/Next and the left/
-right arrow keys browse the filtered selection. Escape or Close exits.
+Gallery: choose a category and open a photograph. Previous/Next browse the filtered selection in an on-page preview.
+Close hides the preview.
 Quiz: answer every question before checking. Saving is optional and uses only
 this browser. Clear saved score removes the stored result. Storage settings
 and file:// handling vary by browser; the quiz works without saving.
@@ -51,7 +51,15 @@ with the group's repository details.
 CHECKS PERFORMED
 Browser checks: navigation, story expansion, gallery filtering and next-image
 navigation, incomplete quiz validation, correct 6/6 scoring, saved-score reload
-and clearing, empty contact form errors, valid contact preview, phone menu and
-home/quiz horizontal width at a 390px viewport. JavaScript syntax and local
+and clearing, empty contact form errors, valid contact preview, the previous phone menu and
+home/quiz horizontal width at a 390px viewport. The simplified version was
+rechecked for gallery filtering, preview switching and closing, form errors,
+and homepage width at 390px. Navigation now wraps directly on small screens. JavaScript syntax and local
 HTML resource paths were also checked. These checks are not a full WCAG audit
 or a claim of testing every browser/device.
+
+WORKING LOCATION
+D:\auth-web is the current project folder. Make all future changes here.
+The simplified layout uses basic colours, Flexbox and one media query.
+The former modal viewer has been replaced with a normal page section.
+The coursework report and peer assessment are not included at this stage.
