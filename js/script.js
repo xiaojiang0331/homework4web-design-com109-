@@ -109,19 +109,22 @@ var quizAnswers = [
 /* Assigned to: Xu Jiale
    Shared page setup and home page date display. */
 $(function () {
+  // 首页内容淡入显示
+  $('.hero').hide().fadeIn(500);
+
   $('#current-date').text(new Date().toLocaleDateString('en-GB', {
     day: 'numeric', month: 'short', year: 'numeric'
   }));
 
   /* Assigned to: Xu Jiale
-     Expand and collapse the photographer stories with jQuery. */
+     Fade the photographer stories in and out with jQuery. */
   // 点击按钮展开或收起介绍
   $('.story-details').hide();
   $('.story-toggle').attr('aria-expanded', 'false').text('Read the story');
   $('.story-toggle').on('click', function () {
     var expanded = $(this).attr('aria-expanded') === 'true';
-    var duration = 200;
-    $('#' + $(this).attr('aria-controls')).slideToggle(duration);
+    var duration = 300;
+    $('#' + $(this).attr('aria-controls')).fadeToggle(duration);
     if (expanded) {
       $(this).attr('aria-expanded', 'false').text('Read the story');
     } else {
@@ -145,7 +148,11 @@ $(function () {
     visibleImages = [];
     $('.gallery-item').each(function () {
       var show = category === 'All' || $(this).attr('data-category') === category;
-      $(this).prop('hidden', !show);
+      if (show) {
+        $(this).hide().prop('hidden', false).fadeIn(350);
+      } else {
+        $(this).prop('hidden', true);
+      }
       if (show) {
         var imageNumber = Number($(this).find('button').attr('data-index'));
         visibleImages.push(imageNumber);
@@ -178,19 +185,32 @@ $(function () {
     if (position < 0) {
       position = visibleImages.length - 1;
     }
-    showImage(visibleImages[position]);
+    // 先淡出旧图片，再换图并淡入
+    $('#previous-image, #next-image').prop('disabled', true);
+    $('#viewer-image').fadeOut(180, function () {
+      showImage(visibleImages[position]);
+      $('#previous-image, #next-image').prop('disabled', true);
+      $('#viewer-image').fadeIn(250, function () {
+        $('#previous-image, #next-image').prop('disabled', visibleImages.length < 2);
+      });
+    });
   }
   $('.gallery-open').on('click', function () {
     lastImageButton = this;
     showImage(Number($(this).attr('data-index')));
-    $('#image-viewer').prop('hidden', false);
-    $('#close-viewer').trigger('focus');
+    $('#image-viewer').hide().prop('hidden', false).fadeIn(300, function () {
+      $('#close-viewer').trigger('focus');
+    });
   });
   $('#close-viewer').on('click', function () {
-    $('#image-viewer').prop('hidden', true);
-    if (lastImageButton) {
-      lastImageButton.focus();
-    }
+    $('#close-viewer').prop('disabled', true);
+    $('#image-viewer').fadeOut(250, function () {
+      $('#image-viewer').prop('hidden', true);
+      $('#close-viewer').prop('disabled', false);
+      if (lastImageButton) {
+        lastImageButton.focus();
+      }
+    });
   });
   $('#previous-image').on('click', function () {
     moveImage(-1);
@@ -256,12 +276,14 @@ $(function () {
     // 将分数写到页面上的结果区域
     $('#quiz-result-heading').text(resultHeading);
     $('#quiz-result-score').text(score + ' / 6');
-    $('#quiz-result').prop('hidden', false);
+    // 检查答案后，成绩淡入显示
+    $('#quiz-result').hide().prop('hidden', false).fadeIn(350, function () {
+      $('#quiz-result').trigger('focus');
+    });
     if ($('#save-score').is(':checked')) {
       localStorage.setItem('lensLegacyQuiz', JSON.stringify({ score: score, date: new Date().toLocaleDateString('en-GB') }));
       showSavedScore();
     }
-    $('#quiz-result').trigger('focus');
   });
   $('#quiz-form').on('reset', function () {
     $('.answer-feedback, #quiz-error').text('');
@@ -285,7 +307,7 @@ $(function () {
     $('#contact-form input, #contact-form select, #contact-form textarea').attr('aria-invalid', 'false');
 
     function reportError(field, text) {
-      $('#' + field + '-error').text(text);
+      $('#' + field + '-error').hide().text(text).fadeIn(200);
       $('#' + field).attr('aria-invalid', 'true');
       if (firstInvalid === '') {
         firstInvalid = field;
@@ -317,12 +339,24 @@ $(function () {
     $('#result-email').text(email);
     $('#result-subject').text(subject);
     $('#result-message').text(message);
-    $('#contact-form').prop('hidden', true);
-    $('#contact-result').prop('hidden', false).trigger('focus');
+    // 验证通过后，表单淡出，留言结果淡入
+    $('#contact-form button').prop('disabled', true);
+    $('#contact-form').fadeOut(250, function () {
+      $('#contact-form').prop('hidden', true);
+      $('#contact-form button').prop('disabled', false);
+      $('#contact-result').hide().prop('hidden', false).fadeIn(300, function () {
+        $('#contact-result').trigger('focus');
+      });
+    });
   });
   $('#edit-message').on('click', function () {
-    $('#contact-result').prop('hidden', true);
-    $('#contact-form').prop('hidden', false);
-    $('#name').trigger('focus');
+    $('#edit-message').prop('disabled', true);
+    $('#contact-result').fadeOut(250, function () {
+      $('#contact-result').prop('hidden', true);
+      $('#edit-message').prop('disabled', false);
+      $('#contact-form').hide().prop('hidden', false).fadeIn(300, function () {
+        $('#name').trigger('focus');
+      });
+    });
   });
 });
