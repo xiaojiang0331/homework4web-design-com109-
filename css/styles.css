@@ -1,4 +1,5 @@
-/* Basic styles used on every page */
+/* Assigned to: Xu Jiale
+   Shared colours, fonts, spacing and keyboard focus styles. */
 * {
     box-sizing: border-box;
 }
@@ -68,7 +69,7 @@ figcaption {
 [hidden] {
     display: none !important;
 }
-:focus-visible {
+:focus {
     outline: 3px solid #a25809;
     outline-offset: 3px;
 }
@@ -82,7 +83,8 @@ figcaption {
 .skip-link:focus {
     top: 10px;
 }
-/* Header and navigation */
+/* Assigned to: Xu Jiale
+   Header and navigation styles. */
 .site-header {
     padding: 20px 5%;
     background: #233f59;
@@ -113,7 +115,8 @@ nav a:hover, nav a.active {
     background: #426581;
     text-decoration: underline;
 }
-/* Homepage */
+/* Assigned to: Xu Jiale
+   Home page layout and featured photographer cards. */
 .hero {
     display: flex;
     align-items: center;
@@ -164,7 +167,7 @@ nav a:hover, nav a.active {
     gap: 20px;
 }
 .feature-card, .gallery-item {
-    width: calc((100% - 40px) / 3);
+    width: 30%;
     background: white;
     border: 1px solid #ccd3da;
     padding: 15px;
@@ -188,7 +191,8 @@ nav a:hover, nav a.active {
     padding: 25px;
     background: #dde7ef;
 }
-/* Photographer information */
+/* Assigned to: Xu Jiale
+   Photographer profile and expandable story styles. */
 .page-intro {
     padding: 25px 0;
     border-bottom: 1px solid #ccd3da;
@@ -231,7 +235,8 @@ nav a:hover, nav a.active {
     padding-top: 5px;
     border-top: 1px solid #ccd3da;
 }
-/* Gallery filters and a simple on-page picture preview */
+/* Assigned to: Yang Angran
+   Gallery filters, photograph cards and image preview styles. */
 .gallery-section {
     padding-top: 25px;
 }
@@ -305,7 +310,8 @@ nav a:hover, nav a.active {
 .credits li {
     margin-bottom: 12px;
 }
-/* Forms and quiz */
+/* Shared layout assigned to: Wei Junze and Gao Qianchen
+   Quiz and contact page columns. */
 .quiz-layout, .contact-layout {
     display: flex;
     gap: 30px;
@@ -328,6 +334,8 @@ nav a:hover, nav a.active {
 .contact-note img {
     width: 100%;
 }
+/* Assigned to: Wei Junze
+   Quiz question, answer and feedback styles. */
 fieldset {
     margin: 0 0 22px;
     padding: 18px;
@@ -351,6 +359,8 @@ legend {
     color: #254f75;
     font-weight: bold;
 }
+/* Assigned to: Gao Qianchen
+   Contact form fields, labels, character counter and validation errors. */
 .form-field {
     margin-bottom: 18px;
 }
@@ -396,16 +406,19 @@ input[type=checkbox], input[type=radio] {
 [aria-invalid=true] {
     border-color: #a42520 !important;
 }
+/* Shared result styles assigned to: Wei Junze and Gao Qianchen. */
 .result-panel {
     padding: 20px;
     margin-top: 20px;
     border: 1px solid #8aa38b;
     background: #e8f1e8;
 }
+/* Assigned to: Wei Junze - quiz score. */
 .score {
     font-size: 30px;
     font-weight: bold;
 }
+/* Assigned to: Gao Qianchen - submitted message details. */
 dt {
     font-weight: bold;
 }
@@ -414,6 +427,7 @@ dd {
     white-space: pre-wrap;
     overflow-wrap: anywhere;
 }
+/* Assigned to: Xu Jiale - shared footer. */
 .site-footer {
     padding: 25px 5%;
     background: #233f59;
@@ -432,7 +446,8 @@ dd {
 .notice {
     padding: 20px;
 }
-/* Simple phone layout */
+/* Shared phone layout assigned to: Xu Jiale
+   Each page owner checks their own page at small screen sizes. */
 @media (max-width: 700px) {
     .hero, .profile, .quiz-layout, .contact-layout {
         flex-direction: column;

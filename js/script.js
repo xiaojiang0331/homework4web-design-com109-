@@ -1,4 +1,5 @@
-/* Gallery records and quiz answers. */
+/* Assigned to: Yang Angran
+   Gallery photograph records and image source information. */
 var photographs = [
   {
     "id": "adams",
@@ -50,6 +51,8 @@ var photographs = [
   }
 ];
 
+/* Assigned to: Wei Junze
+   Quiz answers and explanations. */
 var quizAnswers = [
   {
     "correct": 0,
@@ -77,23 +80,30 @@ var quizAnswers = [
   }
 ];
 
-/* Shared navigation and date */
+/* Assigned to: Xu Jiale
+   Shared page setup and home page date display. */
 $(function () {
   $('#current-date').text(new Date().toLocaleDateString('en-GB', {
     day: 'numeric', month: 'short', year: 'numeric'
   }));
 
-  /* Photographer stories use a simple jQuery effect. */
+  /* Assigned to: Xu Jiale
+     Expand and collapse the photographer stories with jQuery. */
   $('.story-details').hide();
   $('.story-toggle').attr('aria-expanded', 'false').text('Read the story');
   $('.story-toggle').on('click', function () {
     var expanded = $(this).attr('aria-expanded') === 'true';
     var duration = 200;
-    $('#' + $(this).attr('aria-controls')).stop(true, true).slideToggle(duration);
-    $(this).attr('aria-expanded', !expanded).text(expanded ? 'Read the story' : 'Close the story');
+    $('#' + $(this).attr('aria-controls')).slideToggle(duration);
+    if (expanded) {
+      $(this).attr('aria-expanded', 'false').text('Read the story');
+    } else {
+      $(this).attr('aria-expanded', 'true').text('Close the story');
+    }
   });
 
-  /* Gallery filters */
+  /* Assigned to: Yang Angran
+     Category filters, photograph preview and previous/next controls. */
   var visibleImages = [0, 1, 2, 3, 4, 5];
   var currentImage = 0;
   var lastImageButton;
@@ -108,7 +118,11 @@ $(function () {
       $(this).prop('hidden', !show);
       if (show) visibleImages.push(Number($(this).find('button').attr('data-index')));
     });
-    $('#gallery-status').text('Showing ' + visibleImages.length + (visibleImages.length === 1 ? ' photograph' : ' photographs'));
+    if (visibleImages.length === 1) {
+      $('#gallery-status').text('Showing 1 photograph');
+    } else {
+      $('#gallery-status').text('Showing ' + visibleImages.length + ' photographs');
+    }
   });
 
   function showImage(index) {
@@ -130,7 +144,6 @@ $(function () {
     lastImageButton = this;
     showImage(Number($(this).attr('data-index')));
     $('#image-viewer').prop('hidden', false);
-    document.getElementById('image-viewer').scrollIntoView();
     $('#close-viewer').trigger('focus');
   });
   $('#close-viewer').on('click', function () {
@@ -141,29 +154,27 @@ $(function () {
   $('#next-image').on('click', function () { moveImage(1); });
 
 
-  /* Local storage is optional. The quiz still works if storage is blocked. */
+  /* Assigned to: Wei Junze
+     Save, load and clear the latest quiz result using LocalStorage. */
   function showSavedScore() {
-    try {
-      var saved = localStorage.getItem('lensLegacyQuiz');
-      if (saved) {
-        var result = JSON.parse(saved);
-        $('#last-score').text('Latest saved score: ' + result.score + '/6 · ' + result.date);
-      } else {
-        $('#last-score').text('No score saved on this device.');
-      }
-    } catch (error) {
-      $('#last-score').text('Storage is unavailable. You can still take the quiz.');
+    var saved = localStorage.getItem('lensLegacyQuiz');
+    if (saved) {
+      var result = JSON.parse(saved);
+      $('#last-score').text('Latest saved score: ' + result.score + '/6 · ' + result.date);
+    } else {
+      $('#last-score').text('No score saved on this device.');
     }
   }
-  if ($('#quiz-form').length) showSavedScore();
+  if ($('#quiz-form').length) {
+    showSavedScore();
+  }
   $('#clear-score').on('click', function () {
-    try {
-      localStorage.removeItem('lensLegacyQuiz');
-      showSavedScore();
-    } catch (error) { $('#last-score').text('Storage is unavailable in this browser.'); }
+    localStorage.removeItem('lensLegacyQuiz');
+    showSavedScore();
   });
 
-  /* Quiz validation, scoring and answer explanations */
+  /* Assigned to: Wei Junze
+     Check unanswered questions, calculate scores and show explanations. */
   $('#quiz-form').on('submit', function (event) {
     event.preventDefault();
     var missing = -1;
@@ -181,18 +192,24 @@ $(function () {
       var answer = Number($('input[name="q' + j + '"]:checked').val());
       var correct = answer === quizAnswers[j].correct;
       if (correct) score++;
-      $('#feedback-' + j).text((correct ? 'Correct. ' : 'Not quite. ') + quizAnswers[j].explanation);
+      if (correct) {
+        $('#feedback-' + j).text('Correct. ' + quizAnswers[j].explanation);
+      } else {
+        $('#feedback-' + j).text('Not quite. ' + quizAnswers[j].explanation);
+      }
+    }
+    var resultHeading = 'Your quiz result';
+    if (score === 6) {
+      resultHeading = 'All answers correct!';
     }
     $('#quiz-result').empty().prop('hidden', false)
       .append($('<p>').addClass('eyebrow').text('YOUR RESULT'))
-      .append($('<h2>').text(score === 6 ? 'All answers correct!' : 'Your quiz result'))
+      .append($('<h2>').text(resultHeading))
       .append($('<p>').addClass('score').text(score + ' / 6'))
       .append($('<p>').text('Review the explanation below each question, then revisit the photographer stories.'));
     if ($('#save-score').is(':checked')) {
-      try {
-        localStorage.setItem('lensLegacyQuiz', JSON.stringify({ score: score, date: new Date().toLocaleDateString('en-GB') }));
-        showSavedScore();
-      } catch (error) { $('#last-score').text('Your score could not be saved, but your result is shown below.'); }
+      localStorage.setItem('lensLegacyQuiz', JSON.stringify({ score: score, date: new Date().toLocaleDateString('en-GB') }));
+      showSavedScore();
     }
     $('#quiz-result').trigger('focus');
   });
@@ -201,7 +218,8 @@ $(function () {
     $('#quiz-result').prop('hidden', true).empty();
   });
 
-  /* Contact form: field-specific validation and a safe DOM preview */
+  /* Assigned to: Gao Qianchen
+     Character counter, field validation, email regex and message display. */
   $('#message').on('input', function () { $('#character-count').text($(this).val().length); });
   $('#contact-form').on('submit', function (event) {
     event.preventDefault();
