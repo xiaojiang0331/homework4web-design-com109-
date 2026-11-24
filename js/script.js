@@ -1,5 +1,6 @@
 /* Assigned to: Yang Angran
    Gallery photograph records and image source information. */
+// 图片资料按数组顺序存放
 var photographs = [
   {
     "id": "adams",
@@ -48,11 +49,36 @@ var photographs = [
     "date": "1942",
     "alt": "Ella Watson stands with cleaning tools in front of an American flag",
     "source": "https://commons.wikimedia.org/wiki/File:Gordon_Parks_-_American_Gothic.jpg"
+  },
+  {
+    "id": "atkins",
+    "name": "Anna Atkins",
+    "title": "Dictyota dichotoma, in the young state; and in fruit",
+    "date": "1843–1853",
+    "alt": "White branching algae shapes on a blue cyanotype background",
+    "source": "https://commons.wikimedia.org/wiki/File:Anna_Atkins_algae_cyanotype.jpg"
+  },
+  {
+    "id": "muybridge",
+    "name": "Eadweard Muybridge",
+    "title": "The Horse in Motion",
+    "date": "1878",
+    "alt": "A sequence of small photographs showing the successive positions of a galloping horse",
+    "source": "https://commons.wikimedia.org/wiki/File:The_Horse_in_Motion.jpg"
+  },
+  {
+    "id": "talbot",
+    "name": "William Henry Fox Talbot",
+    "title": "Latticed Window at Lacock Abbey",
+    "date": "1835",
+    "alt": "A print showing the geometric panes of a latticed window at Lacock Abbey",
+    "source": "https://www.edinphoto.org.uk/1_P/1_photographers_talbot_smm_latticed_window.htm"
   }
 ];
 
 /* Assigned to: Wei Junze
    Quiz answers and explanations. */
+// 选项从 0 开始编号，correct 是正确选项
 var quizAnswers = [
   {
     "correct": 0,
@@ -89,6 +115,7 @@ $(function () {
 
   /* Assigned to: Xu Jiale
      Expand and collapse the photographer stories with jQuery. */
+  // 点击按钮展开或收起介绍
   $('.story-details').hide();
   $('.story-toggle').attr('aria-expanded', 'false').text('Read the story');
   $('.story-toggle').on('click', function () {
@@ -104,7 +131,10 @@ $(function () {
 
   /* Assigned to: Yang Angran
      Category filters, photograph preview and previous/next controls. */
-  var visibleImages = [0, 1, 2, 3, 4, 5];
+  var visibleImages = [];
+  for (var imageIndex = 0; imageIndex < photographs.length; imageIndex++) {
+    visibleImages.push(imageIndex);
+  }
   var currentImage = 0;
   var lastImageButton;
   $('.filter-button').on('click', function () {
@@ -116,7 +146,10 @@ $(function () {
     $('.gallery-item').each(function () {
       var show = category === 'All' || $(this).attr('data-category') === category;
       $(this).prop('hidden', !show);
-      if (show) visibleImages.push(Number($(this).find('button').attr('data-index')));
+      if (show) {
+        var imageNumber = Number($(this).find('button').attr('data-index'));
+        visibleImages.push(imageNumber);
+      }
     });
     if (visibleImages.length === 1) {
       $('#gallery-status').text('Showing 1 photograph');
@@ -137,7 +170,14 @@ $(function () {
   }
   function moveImage(direction) {
     var position = visibleImages.indexOf(currentImage);
-    position = (position + direction + visibleImages.length) % visibleImages.length;
+    // 到最后一张后回到第一张，反方向也一样
+    position = position + direction;
+    if (position >= visibleImages.length) {
+      position = 0;
+    }
+    if (position < 0) {
+      position = visibleImages.length - 1;
+    }
     showImage(visibleImages[position]);
   }
   $('.gallery-open').on('click', function () {
@@ -148,15 +188,22 @@ $(function () {
   });
   $('#close-viewer').on('click', function () {
     $('#image-viewer').prop('hidden', true);
-    if (lastImageButton) lastImageButton.focus();
+    if (lastImageButton) {
+      lastImageButton.focus();
+    }
   });
-  $('#previous-image').on('click', function () { moveImage(-1); });
-  $('#next-image').on('click', function () { moveImage(1); });
+  $('#previous-image').on('click', function () {
+    moveImage(-1);
+  });
+  $('#next-image').on('click', function () {
+    moveImage(1);
+  });
 
 
   /* Assigned to: Wei Junze
      Save, load and clear the latest quiz result using LocalStorage. */
   function showSavedScore() {
+    // 读取上一次保存在浏览器里的成绩
     var saved = localStorage.getItem('lensLegacyQuiz');
     if (saved) {
       var result = JSON.parse(saved);
@@ -177,9 +224,13 @@ $(function () {
      Check unanswered questions, calculate scores and show explanations. */
   $('#quiz-form').on('submit', function (event) {
     event.preventDefault();
+    // 先检查有没有漏答，再开始计分
     var missing = -1;
     for (var i = 0; i < quizAnswers.length; i++) {
-      if (!$('input[name="q' + i + '"]:checked').length && missing === -1) missing = i;
+      var selectedAnswer = $('input[name="q' + i + '"]:checked');
+      if (selectedAnswer.length === 0 && missing === -1) {
+        missing = i;
+      }
     }
     if (missing !== -1) {
       $('#quiz-error').text('Please answer all six questions before checking your answers.');
@@ -191,8 +242,8 @@ $(function () {
     for (var j = 0; j < quizAnswers.length; j++) {
       var answer = Number($('input[name="q' + j + '"]:checked').val());
       var correct = answer === quizAnswers[j].correct;
-      if (correct) score++;
       if (correct) {
+        score = score + 1;
         $('#feedback-' + j).text('Correct. ' + quizAnswers[j].explanation);
       } else {
         $('#feedback-' + j).text('Not quite. ' + quizAnswers[j].explanation);
@@ -202,11 +253,10 @@ $(function () {
     if (score === 6) {
       resultHeading = 'All answers correct!';
     }
-    $('#quiz-result').empty().prop('hidden', false)
-      .append($('<p>').addClass('eyebrow').text('YOUR RESULT'))
-      .append($('<h2>').text(resultHeading))
-      .append($('<p>').addClass('score').text(score + ' / 6'))
-      .append($('<p>').text('Review the explanation below each question, then revisit the photographer stories.'));
+    // 将分数写到页面上的结果区域
+    $('#quiz-result-heading').text(resultHeading);
+    $('#quiz-result-score').text(score + ' / 6');
+    $('#quiz-result').prop('hidden', false);
     if ($('#save-score').is(':checked')) {
       localStorage.setItem('lensLegacyQuiz', JSON.stringify({ score: score, date: new Date().toLocaleDateString('en-GB') }));
       showSavedScore();
@@ -215,12 +265,15 @@ $(function () {
   });
   $('#quiz-form').on('reset', function () {
     $('.answer-feedback, #quiz-error').text('');
-    $('#quiz-result').prop('hidden', true).empty();
+    $('#quiz-result').prop('hidden', true);
   });
 
   /* Assigned to: Gao Qianchen
      Character counter, field validation, email regex and message display. */
-  $('#message').on('input', function () { $('#character-count').text($(this).val().length); });
+  // 输入留言时显示当前字数
+  $('#message').on('input', function () {
+    $('#character-count').text($(this).val().length);
+  });
   $('#contact-form').on('submit', function (event) {
     event.preventDefault();
     var name = $('#name').val().trim();
@@ -234,20 +287,32 @@ $(function () {
     function reportError(field, text) {
       $('#' + field + '-error').text(text);
       $('#' + field).attr('aria-invalid', 'true');
-      if (!firstInvalid) firstInvalid = field;
+      if (firstInvalid === '') {
+        firstInvalid = field;
+      }
     }
-    if (name.length < 2 || name.length > 60) reportError('name', 'Please enter a name between 2 and 60 characters.');
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 100) reportError('email', 'Please enter a valid email address, such as alex@example.com.');
-    if (!subject) reportError('subject', 'Please choose a subject.');
-    if (message.length < 10 || message.length > 600) reportError('message', 'Please enter a message between 10 and 600 characters.');
-    if (!$('#consent').is(':checked')) reportError('consent', 'Please check your details and tick the box.');
+    if (name.length < 2 || name.length > 60) {
+      reportError('name', 'Please enter a name between 2 and 60 characters.');
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 100) {
+      reportError('email', 'Please enter a valid email address, such as alex@example.com.');
+    }
+    if (!subject) {
+      reportError('subject', 'Please choose a subject.');
+    }
+    if (message.length < 10 || message.length > 600) {
+      reportError('message', 'Please enter a message between 10 and 600 characters.');
+    }
+    if (!$('#consent').is(':checked')) {
+      reportError('consent', 'Please check your details and tick the box.');
+    }
     if (firstInvalid) {
       $('#contact-status').text('Please correct the highlighted fields.');
       $('#' + firstInvalid).trigger('focus');
       $('#contact-result').prop('hidden', true);
       return;
     }
-    // text() displays user input as text, never as executable HTML.
+    // 用 text 显示留言，避免把输入内容当作 HTML
     $('#result-name').text(name);
     $('#result-email').text(email);
     $('#result-subject').text(subject);

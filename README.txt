@@ -11,3 +11,5 @@ The quiz can save the latest score in this browser using LocalStorage.
 
 Project folder: D:\auth-web
 The report and peer assessment will be added after the website is approved.
+
+The collection now includes nine photographers. The quiz has six questions.

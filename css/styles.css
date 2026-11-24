@@ -3,6 +3,7 @@
 * {
     box-sizing: border-box;
 }
+/* 整个网站的字体和底色 */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -200,6 +201,7 @@ nav a:hover, nav a.active {
 .profiles {
     padding-bottom: 25px;
 }
+/* 摄影家图片和文字左右排列 */
 .profile {
     display: flex;
     gap: 25px;
@@ -448,6 +450,7 @@ dd {
 }
 /* Shared phone layout assigned to: Xu Jiale
    Each page owner checks their own page at small screen sizes. */
+/* 手机屏幕较窄时，改成上下排列 */
 @media (max-width: 700px) {
     .hero, .profile, .quiz-layout, .contact-layout {
         flex-direction: column;
@@ -463,5 +466,192 @@ dd {
     }
     h1 {
         font-size: 28px;
+    }
+}
+
+/* Assigned to: Xu Jiale - extra home and profile styles. */
+/* 卡片圆角、阴影和简单的悬停效果 */
+.site-header {
+    border-bottom: 5px solid #b9cddd;
+}
+.hero {
+    border-radius: 8px;
+    border-top: 4px solid #426581;
+    box-shadow: 0 3px 8px #d0d7dd;
+}
+.hero h1 {
+    margin-top: 0;
+}
+.section h2, .page-intro h1 {
+    border-left: 5px solid #5e819e;
+    padding-left: 12px;
+}
+.feature-grid {
+    justify-content: space-between;
+    row-gap: 25px;
+    margin-top: 20px;
+}
+.feature-card {
+    border-radius: 6px;
+    box-shadow: 0 2px 5px #d3dbe1;
+    transition: box-shadow 0.3s;
+}
+.feature-card:hover {
+    box-shadow: 0 5px 12px #b4c3ce;
+}
+.image-frame {
+    overflow: hidden;
+    border-radius: 4px;
+}
+.feature-card img {
+    transition: transform 0.3s;
+}
+.feature-card:hover img {
+    transform: scale(1.04);
+}
+.eyebrow {
+    display: inline-block;
+    padding: 3px 9px;
+    border-radius: 4px;
+    background: #e6eef4;
+    color: #304e67;
+}
+.profile {
+    border-radius: 6px;
+    border-left: 5px solid #7598b5;
+}
+/* 相邻的人物介绍使用不同底色 */
+.profile:nth-child(even) {
+    background: #f8fafb;
+    border-left-color: #8aa48c;
+}
+.profile figure img {
+    border: 5px solid white;
+    box-shadow: 0 2px 5px #c8d1d8;
+}
+.story-details {
+    background: #edf3f7;
+    padding: 15px;
+    border-radius: 4px;
+}
+.photographer-list {
+    gap: 8px;
+    margin: 24px 0;
+    padding: 15px;
+    background: #dfe9f0;
+    border-radius: 5px;
+}
+.photographer-list a {
+    background: white;
+    color: #254f75;
+    border: 1px solid #b8c9d7;
+}
+.photographer-list a:hover {
+    background: #254f75;
+    color: white;
+}
+.style-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+.style-card {
+    width: 30%;
+    padding: 20px;
+    border-radius: 6px;
+    border-top: 4px solid #7598b5;
+}
+.style-card h3 {
+    margin-top: 0;
+}
+.blue-card {
+    background: #e0ebf4;
+}
+.warm-card {
+    background: #f3eadb;
+    border-top-color: #b6935f;
+}
+.green-card {
+    background: #e3ece2;
+    border-top-color: #799775;
+}
+/* 背景图片只放在右边，文字放在左边 */
+.photo-tip {
+    padding: 25px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    border: 1px solid #b8c9d7;
+    border-radius: 6px;
+    background-color: #e5edf3;
+    background-image: url('../images/adams.jpg');
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 30% auto;
+}
+.photo-tip h2, .photo-tip p {
+    max-width: 65%;
+}
+.learning-banner {
+    border-radius: 6px;
+    border-left: 5px solid #7598b5;
+}
+.button, .secondary-button, nav a {
+    transition: background-color 0.2s;
+}
+
+/* Assigned to: Yang Angran - gallery image and filter styles. */
+.gallery-grid {
+    justify-content: space-between;
+}
+.gallery-item {
+    border-radius: 6px;
+    border-bottom: 4px solid #7598b5;
+}
+.gallery-item:nth-child(even) {
+    border-bottom-color: #8aa48c;
+}
+.gallery-open img {
+    transition: opacity 0.3s;
+}
+.gallery-open:hover img {
+    opacity: 0.8;
+}
+.filter-button {
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+/* Assigned to: Wei Junze - quiz answer styles. */
+fieldset {
+    border-radius: 6px;
+}
+.answer-option {
+    padding: 8px;
+    border-radius: 3px;
+}
+.answer-option:hover {
+    background: #e5edf3;
+}
+
+/* Assigned to: Gao Qianchen - contact input styles. */
+input[type=text]:focus, input[type=email]:focus, textarea:focus, select:focus {
+    background: #f4f8fc;
+    border-color: #254f75;
+}
+
+/* Shared small-screen styles assigned to: Xu Jiale. */
+@media (max-width: 700px) {
+    .style-cards {
+        flex-direction: column;
+    }
+    .style-card {
+        width: 100%;
+    }
+    .photo-tip {
+        background-image: none;
+    }
+    .photo-tip h2, .photo-tip p {
+        max-width: 100%;
     }
 }

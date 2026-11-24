@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Discover six influential photographers, explore their work and learn to look more closely with Lens and Legacy.">
+  <meta name="description" content="Discover nine influential photographers, explore their work and learn to look more closely with Lens and Legacy.">
   <title>Gallery | Lens &amp; Legacy</title>
   <link rel="icon" href="images/favicon.png" type="image/png">
   <link rel="stylesheet" href="css/styles.css">
@@ -20,6 +20,7 @@
   <nav id="navigation" aria-label="Main navigation"><a href="index.html">Home</a><a href="photographers.html">Photographers</a><a href="gallery.html" class="active" aria-current="page">Gallery</a><a href="quiz.html">Photography Quiz</a><a href="contact.html">Contact</a></nav>
 </header>
 <!-- Main content assigned to: Yang Angran. -->
+<!-- 画廊分类按钮和图片预览 -->
 <main id="main">
 <section class="page-intro wrap">
 
@@ -28,8 +29,11 @@
 </section>
 <section class="wrap gallery-section" aria-label="Photograph collection">
 <div class="filter-bar" role="group" aria-label="Filter photographs"><button type="button" class="filter-button selected" data-filter="All" aria-pressed="true">All</button><button type="button" class="filter-button" data-filter="Landscape" aria-pressed="false">Landscape</button><button type="button" class="filter-button" data-filter="Documentary" aria-pressed="false">Documentary</button><button type="button" class="filter-button" data-filter="Street" aria-pressed="false">Street</button><button type="button" class="filter-button" data-filter="Portrait" aria-pressed="false">Portrait</button>
+<button type="button" class="filter-button" data-filter="Nature" aria-pressed="false">Nature</button>
+<button type="button" class="filter-button" data-filter="Motion" aria-pressed="false">Motion</button>
+<button type="button" class="filter-button" data-filter="Early photography" aria-pressed="false">Early photography</button>
 </div>
-<p id="gallery-status" class="muted" role="status">Showing 6 photographs</p>
+<p id="gallery-status" class="muted" role="status">Showing 9 photographs</p>
 <section hidden class="gallery-preview" id="image-viewer" aria-labelledby="viewer-title">
 <div class="viewer-top">
 <p id="viewer-count"></p><button id="close-viewer" type="button">Close</button>
@@ -84,6 +88,30 @@
 <p>Gordon Parks</p>
 </figcaption>
 </figure>
+<figure class="gallery-item" data-category="Nature">
+  <button class="gallery-open" type="button" data-index="6" aria-label="View Dictyota dichotoma, in the young state; and in fruit by Anna Atkins">
+    <img src="images/atkins.jpg" alt="White branching algae shapes on a blue cyanotype background" loading="lazy"><span>View photograph</span>
+  </button>
+  <figcaption><p class="eyebrow">Nature · 1843–1853</p>
+    <h2>Dictyota dichotoma, in the young state; and in fruit</h2><p>Anna Atkins</p>
+  </figcaption>
+</figure>
+<figure class="gallery-item" data-category="Motion">
+  <button class="gallery-open" type="button" data-index="7" aria-label="View The Horse in Motion by Eadweard Muybridge">
+    <img src="images/muybridge.jpg" alt="A sequence of small photographs showing the successive positions of a galloping horse" loading="lazy"><span>View photograph</span>
+  </button>
+  <figcaption><p class="eyebrow">Motion · 1878</p>
+    <h2>The Horse in Motion</h2><p>Eadweard Muybridge</p>
+  </figcaption>
+</figure>
+<figure class="gallery-item" data-category="Early photography">
+  <button class="gallery-open" type="button" data-index="8" aria-label="View Latticed Window at Lacock Abbey by William Henry Fox Talbot">
+    <img src="images/talbot.jpg" alt="A print showing the geometric panes of a latticed window at Lacock Abbey" loading="lazy"><span>View photograph</span>
+  </button>
+  <figcaption><p class="eyebrow">Early photography · 1835</p>
+    <h2>Latticed Window at Lacock Abbey</h2><p>William Henry Fox Talbot</p>
+  </figcaption>
+</figure>
 </div>
 </section>
 <section class="credits wrap section" id="credits">
@@ -97,8 +125,11 @@
 <li><a href="https://commons.wikimedia.org/wiki/File:Julia_Margaret_Cameron_-_Sir_John_Frederick_William_Herschel_-_Google_Art_Project.jpg" target="_blank" rel="noopener">Julia Margaret Cameron — Sir John Frederick William Herschel, 1867 (source)</a></li>
 <li><a href="https://commons.wikimedia.org/wiki/File:Hine,_Lewis,_Adolescent_Girl,_a_Spinner,_in_a_Carolina_Cotton_Mill,_1908.jpg" target="_blank" rel="noopener">Lewis Hine — Adolescent Girl, a Spinner, in a Carolina Cotton Mill, 1908 (source)</a></li>
 <li><a href="https://commons.wikimedia.org/wiki/File:Gordon_Parks_-_American_Gothic.jpg" target="_blank" rel="noopener">Gordon Parks — American Gothic, Washington, D.C., 1942 (source)</a></li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Anna_Atkins_algae_cyanotype.jpg" target="_blank" rel="noopener">Anna Atkins — Dictyota dichotoma, in the young state; and in fruit, 1843–1853 (source)</a><br><small>Courtesy of The New York Public Library, www.nypl.org.</small></li>
+<li><a href="https://commons.wikimedia.org/wiki/File:The_Horse_in_Motion.jpg" target="_blank" rel="noopener">Eadweard Muybridge — The Horse in Motion, 1878 (source)</a><br><small>Historical photograph reproduced via Wikimedia Commons.</small></li>
+<li><a href="https://www.edinphoto.org.uk/1_P/1_photographers_talbot_smm_latticed_window.htm" target="_blank" rel="noopener">William Henry Fox Talbot — Latticed Window at Lacock Abbey, 1835 (source)</a><br><small>Print reproduced by EdinPhoto, credited to the National Museum of Photography, Film and Television.</small></li>
 </ul>
-<p>Other references: <a href="https://guides.loc.gov/migrant-mother">Library of Congress: Migrant Mother</a>; <a href="https://www.archives.gov/research/ansel-adams">National Archives: Ansel Adams</a>; <a href="https://www.nga.gov/educational-resources/uncovering-america/gordon-parks-photography">National Gallery of Art: Gordon Parks</a>. </p>
+<p>Other references: <a href="https://www.getty.edu/news/the-woman-who-captured-nature-in-blue-anna-atkins-and-the-birth-of-photographic-art/">Getty: Anna Atkins</a>; <a href="https://www.loc.gov/pictures/item/2005684184/">Library of Congress: The Horse in Motion</a>;  <a href="https://guides.loc.gov/migrant-mother">Library of Congress: Migrant Mother</a>; <a href="https://www.archives.gov/research/ansel-adams">National Archives: Ansel Adams</a>; <a href="https://www.nga.gov/educational-resources/uncovering-america/gordon-parks-photography">National Gallery of Art: Gordon Parks</a>. </p>
 </section>
 </main>
 <!-- Shared footer assigned to: Xu Jiale. -->

@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Discover six influential photographers, explore their work and learn to look more closely with Lens and Legacy.">
+  <meta name="description" content="Discover nine influential photographers, explore their work and learn to look more closely with Lens and Legacy.">
   <title>Photographers | Lens &amp; Legacy</title>
   <link rel="icon" href="images/favicon.png" type="image/png">
   <link rel="stylesheet" href="css/styles.css">
@@ -20,13 +20,26 @@
   <nav id="navigation" aria-label="Main navigation"><a href="index.html">Home</a><a href="photographers.html" class="active" aria-current="page">Photographers</a><a href="gallery.html">Gallery</a><a href="quiz.html">Photography Quiz</a><a href="contact.html">Contact</a></nav>
 </header>
 <!-- Main content assigned to: Xu Jiale. -->
+<!-- 摄影家介绍，按钮对应展开的文字 -->
 <main id="main">
 <section class="page-intro wrap">
 
 <h1>Photographers</h1>
-<p>Meet six influential figures in the history of photography. Open each story to explore their approach and find one idea to try yourself.</p>
+<p>Meet nine influential figures in the history of photography. Open each story to explore their approach and find one idea to try yourself.</p>
 </section>
 <div class="wrap profiles">
+<nav class="photographer-list" aria-label="Choose a photographer">
+<a href="#adams">Ansel Adams</a>
+<a href="#lange">Dorothea Lange</a>
+<a href="#atget">Eugène Atget</a>
+<a href="#cameron">Julia Margaret Cameron</a>
+<a href="#hine">Lewis Hine</a>
+<a href="#parks">Gordon Parks</a>
+<a href="#atkins">Anna Atkins</a>
+<a href="#muybridge">Eadweard Muybridge</a>
+<a href="#talbot">William Henry Fox Talbot</a>
+</nav>
+
 <article class="profile" id="adams">
 <figure><img src="images/adams.jpg" alt="Dark forested hills beneath the distant mountains of Rocky Mountain National Park" loading="lazy">
 <figcaption>Long’s Peak, Rocky Mountain National Park · 1941<br>Photograph by Ansel Adams</figcaption>
@@ -128,6 +141,60 @@
 <p>Think about the objects around your subject. A setting can add meaning without requiring a complicated composition.</p><a href="https://commons.wikimedia.org/wiki/File:Gordon_Parks_-_American_Gothic.jpg" target="_blank" rel="noopener">Read more about this photograph</a>
 </div>
 </div>
+</article>
+<article class="profile" id="atkins">
+  <figure>
+    <img src="images/atkins.jpg" alt="White branching algae shapes on a blue cyanotype background" loading="lazy">
+    <figcaption>Dictyota dichotoma, in the young state; and in fruit · 1843–1853<br>Photograph by Anna Atkins</figcaption>
+  </figure>
+  <div class="profile-copy">
+    <p class="eyebrow">Nature · United Kingdom · 1799–1871</p>
+    <h2>Anna Atkins</h2>
+    <p class="standfirst">Known for blue cyanotype images of plants and algae.</p>
+    <p>Atkins combined her interest in botany with early photography. She placed specimens on light-sensitive paper to make cyanotypes, producing white shapes against a blue background. Her book Photographs of British Algae began appearing in 1843.</p>
+    <button class="story-toggle text-button" type="button" aria-expanded="true" aria-controls="story-atkins">Close the story</button>
+    <div class="story-details" id="story-atkins">
+      <h3>How to look</h3><p>Look at the spaces between the branches and the contrast between white and blue. The specimen itself creates the composition.</p>
+      <h3>Try this yourself</h3><p>Arrange leaves on a plain background and photograph their outlines. Notice the empty space around each leaf.</p>
+      <a href="https://commons.wikimedia.org/wiki/File:Anna_Atkins_algae_cyanotype.jpg" target="_blank" rel="noopener">Read more about this photograph</a>
+    </div>
+  </div>
+</article>
+<article class="profile" id="muybridge">
+  <figure>
+    <img src="images/muybridge.jpg" alt="A sequence of small photographs showing the successive positions of a galloping horse" loading="lazy">
+    <figcaption>The Horse in Motion · 1878<br>Photograph by Eadweard Muybridge</figcaption>
+  </figure>
+  <div class="profile-copy">
+    <p class="eyebrow">Motion · United Kingdom · 1830–1904</p>
+    <h2>Eadweard Muybridge</h2>
+    <p class="standfirst">Known for sequences of photographs showing movement.</p>
+    <p>Muybridge studied movement by making sequences of photographs. His horse studies recorded stages of a gallop that are difficult to distinguish with the eye alone. These experiments helped connect photography with the development of moving images.</p>
+    <button class="story-toggle text-button" type="button" aria-expanded="true" aria-controls="story-muybridge">Close the story</button>
+    <div class="story-details" id="story-muybridge">
+      <h3>How to look</h3><p>Follow the pictures in order. Compare the position of the legs in each frame rather than looking at only one photograph.</p>
+      <h3>Try this yourself</h3><p>Use a camera burst to photograph someone walking or jumping. Compare the separate frames and select the one that shows the action most clearly.</p>
+      <a href="https://commons.wikimedia.org/wiki/File:The_Horse_in_Motion.jpg" target="_blank" rel="noopener">Read more about this photograph</a>
+    </div>
+  </div>
+</article>
+<article class="profile" id="talbot">
+  <figure>
+    <img src="images/talbot.jpg" alt="A print showing the geometric panes of a latticed window at Lacock Abbey" loading="lazy">
+    <figcaption>Latticed Window at Lacock Abbey · 1835<br>Photograph by William Henry Fox Talbot</figcaption>
+  </figure>
+  <div class="profile-copy">
+    <p class="eyebrow">Early photography · United Kingdom · 1800–1877</p>
+    <h2>William Henry Fox Talbot</h2>
+    <p class="standfirst">Known for early paper negatives and the calotype process.</p>
+    <p>Talbot was an early experimenter in photography. His work with paper negatives helped establish a way to make more than one print from an image. His 1835 photograph of a window at Lacock Abbey is an important example of early photographic work.</p>
+    <button class="story-toggle text-button" type="button" aria-expanded="true" aria-controls="story-talbot">Close the story</button>
+    <div class="story-details" id="story-talbot">
+      <h3>How to look</h3><p>Notice the simple pattern of light and dark window panes. This small, early image shows how an ordinary subject can be useful for an experiment.</p>
+      <h3>Try this yourself</h3><p>Photograph the same window at two different times of day. Compare how the light changes the shapes and shadows.</p>
+      <a href="https://www.edinphoto.org.uk/1_P/1_photographers_talbot_smm_latticed_window.htm" target="_blank" rel="noopener">Read more about this photograph</a>
+    </div>
+  </div>
 </article>
 </div></main>
 <!-- Shared footer assigned to: Xu Jiale. -->
